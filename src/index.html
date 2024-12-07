@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css"> <!-- Uses Bootstrap 5.3 -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+    <script src="/assets/js/libary.js"></script>
+    <script src="/assets/js/marked.min.js"></script>
+    <script src="/assets/js/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+</head>
+<body class="container-fluid" data-bs-theme="light">
+    <i class="bi bi-gear float-start fs-2" style="cursor: pointer;"></i>
+    <h1 class="text-3xl text-center">Markdown Reader</h1>
+    <button class="icon-btn" title="Open File">
+        <i onclick="window.location.href='/settings'" class="bi bi-folder2-open"></i>
+    </button>
+    <input type="file" id="choose_file" style="display: none;">
+    <div id="markdown_reader">
+        
+    </div>
+    <script>
+        $(".icon-btn").on('click', function () {
+            $("#choose_file").click();
+        });
+    
+        $("#choose_file").on('change', function () {
+            const file = document.getElementById("choose_file").files[0];
+            if (file) {
+                console.log(`File chosen: ${file.name}, Size: ${file.size} bytes`);
+                loadMarkdown(file);
+            } else {
+                console.error('No file chosen.');
+                alert("No file was chosen.");
+            }
+        });
+    </script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
